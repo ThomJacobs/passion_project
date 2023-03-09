@@ -26,7 +26,7 @@ namespace NamelessProgrammer
             GetComponent<Collider2D>().isTrigger = false;
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             //Check for enter rectangle.
             if(Physics2D.OverlapBox(m_enterRect.centre + (Vector2)transform.position, m_enterRect.size, transform.eulerAngles.z, m_layerMask))
