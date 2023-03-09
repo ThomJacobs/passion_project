@@ -34,6 +34,7 @@ namespace NamelessProgrammer
         public float HorizontalInput { get => Input.GetAxis("Horizontal"); }
         public float VerticalInput { get => Input.GetAxis("Vertical"); }
         public float RotationInput { get => Input.GetAxis("Rotation"); }
+        public Vector2 MousePosition { get => Camera.main.ScreenToWorldPoint(Input.mousePosition); }
         #endregion
 
         #region Methods
@@ -47,11 +48,11 @@ namespace NamelessProgrammer
         private void Update()
         {
             //Rotation.
-            m_rigidbody.MoveRotation(transform.eulerAngles.z + RotationInput * m_rotationSpeed);
+            transform.rotation = Additional.Math2D.LookAtQuaternion(transform, MousePosition);
 
             //Movement.
             m_rigidbody.MovePosition(transform.position + Time.deltaTime * m_sprintMeta.Speed * (Vector3.up * VerticalInput + Vector3.right * HorizontalInput));
         }
-#endregion
+        #endregion
     }
 }
