@@ -7,8 +7,8 @@ Stay tuned for more upcoming details!
 
 # Player Controller Scheme (In Development)   
 
-W -> Move Forward.
-S -> Move Backward.
-Left Shift -> Sprint.
-Rotate/Aim -> Mouse Position.
-Left Mouse Click -> Fire.
+W -> Move Forward.  
+S -> Move Backward.  
+Left Shift -> Sprint.  
+Rotate/Aim -> Mouse Position.  
+Left Mouse Click -> Fire.  
