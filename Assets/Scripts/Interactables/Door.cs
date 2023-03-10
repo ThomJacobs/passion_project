@@ -13,8 +13,9 @@ namespace NamelessProgrammer
         [SerializeField] private LayerMask m_layerMask;
         [SerializeField] private Vector2 m_pivot;
         [SerializeField] private float m_speed;
+        [SerializeField] private float startEulerAngle;
+        [SerializeField] private float endEulerAngle;
         private Vector2 m_origin;
-        private const int ENTER = 1, EXIT = -1;
         #endregion
 
         #region Methods
@@ -29,23 +30,15 @@ namespace NamelessProgrammer
             //Check for enter rectangle.
             if(Physics2D.OverlapBox(m_enterRect.centre + (Vector2)transform.position, m_enterRect.size, transform.eulerAngles.z, m_layerMask))
             {
-                transform.RotateAround(m_origin, Vector3.forward, m_speed * Time.deltaTime * ENTER);
+                transform.RotateAround(m_origin, Vector3.forward, m_speed * Time.deltaTime);
             }
 
             //Check for exit rectangle.
             else if(Physics2D.OverlapBox(m_exitRect.centre + (Vector2)transform.position, m_exitRect.size, transform.eulerAngles.z, m_layerMask))
             {
-                transform.RotateAround(m_origin, Vector3.forward, m_speed * Time.deltaTime * EXIT);
+                transform.RotateAround(m_origin, Vector3.back, m_speed * Time.deltaTime);
             }
         }
-
-        /*
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            Vector3 direction = (collision.transform.position - transform.position).normalized;
-            transform.RotateAround(Pivot, Vector3.forward, m_speed * Time.deltaTime);
-        }
-        */
         #endregion
 
         #region FOR_DEVELOPMENT_ONLY

@@ -49,9 +49,12 @@ namespace NamelessProgrammer
         {
             //Rotation.
             transform.rotation = Additional.Math2D.LookAtQuaternion(transform, MousePosition);
+        }
 
+        private void FixedUpdate()
+        {
             //Movement.
-            m_rigidbody.MovePosition(transform.position + Time.deltaTime * m_sprintMeta.Speed * (Vector3.up * VerticalInput + Vector3.right * HorizontalInput));
+            m_rigidbody.AddForce(m_sprintMeta.Speed * (Vector3.up * VerticalInput + Vector3.right * HorizontalInput), ForceMode2D.Impulse);
         }
         #endregion
     }
