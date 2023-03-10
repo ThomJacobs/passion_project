@@ -9,7 +9,7 @@ namespace NamelessProgrammer
     {
         #region Attributes
         [SerializeField] private Vector2 m_forwardDirection;
-        [SerializeField] private WeaponMeta m_currentWeapon;
+        [SerializeField] private Weapon m_currentWeapon;
         #endregion
 
         #region Properties
@@ -19,12 +19,7 @@ namespace NamelessProgrammer
         #region Methods
         private void Update()
         {
-            if (!m_currentWeapon) return;
-
-            if(m_currentWeapon.DetectInput)
-            {
-                Debug.Log("Fire");
-            }
+            if (m_currentWeapon != null) m_currentWeapon.OnUse();
         }
         #endregion
 

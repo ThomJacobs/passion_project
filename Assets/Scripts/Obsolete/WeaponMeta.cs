@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace NamelessProgrammer
 {
-    [System.Serializable]
-    public enum WeaponType
-    {
-        STATIC = 0,
-        AUTOMATIC = 1
-    }
-
     [CreateAssetMenu(fileName = "WeaponMeta", menuName = "Mamba/Items", order = 0)]
     public class WeaponMeta : ScriptableObject
     {

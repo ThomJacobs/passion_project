@@ -13,17 +13,15 @@ namespace NamelessProgrammer
         [SerializeField] private LayerMask m_layerMask;
         [SerializeField] private Vector2 m_pivot;
         [SerializeField] private float m_speed;
+        private Vector2 m_origin;
         private const int ENTER = 1, EXIT = -1;
-        #endregion
-
-        #region Properties
-        private Vector2 Pivot { get => (Vector2)transform.position + m_pivot; }
         #endregion
 
         #region Methods
         private void Awake()
         {
             GetComponent<Collider2D>().isTrigger = false;
+            m_origin = (Vector2)transform.position + m_pivot;
         }
 
         private void LateUpdate()
@@ -31,13 +29,13 @@ namespace NamelessProgrammer
             //Check for enter rectangle.
             if(Physics2D.OverlapBox(m_enterRect.centre + (Vector2)transform.position, m_enterRect.size, transform.eulerAngles.z, m_layerMask))
             {
-                transform.RotateAround(Pivot, Vector3.forward, m_speed * Time.deltaTime * ENTER);
+                transform.RotateAround(m_origin, Vector3.forward, m_speed * Time.deltaTime * ENTER);
             }
 
             //Check for exit rectangle.
             else if(Physics2D.OverlapBox(m_exitRect.centre + (Vector2)transform.position, m_exitRect.size, transform.eulerAngles.z, m_layerMask))
             {
-                transform.RotateAround(Pivot, Vector3.forward, m_speed * Time.deltaTime * EXIT);
+                transform.RotateAround(m_origin, Vector3.forward, m_speed * Time.deltaTime * EXIT);
             }
         }
 
@@ -60,7 +58,7 @@ namespace NamelessProgrammer
         {
             //Pivot
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(Pivot, RADIUS * transform.lossyScale.magnitude);
+            Gizmos.DrawWireSphere((Vector2)transform.position + m_pivot, RADIUS * transform.lossyScale.magnitude);
 
             //Apply rotation and position to Gizmo's transformation matrix.
             Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Gizmos.matrix.lossyScale);
