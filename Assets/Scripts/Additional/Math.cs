@@ -13,6 +13,40 @@ namespace NamelessProgrammer.Additional
         #endregion
     }
 
+    [System.Serializable]
+    public struct Range
+    {
+        #region Attributes
+        [SerializeField] private float m_minimum;
+        [SerializeField] private float m_maximum;
+        #endregion
+
+        #region Properties
+        public float Maximum { get => m_maximum; }
+        public float Minimum { get => m_minimum; }
+        #endregion
+
+        #region Methods
+        /**
+         *  Keeps the specified value between the minimum and maximum range.
+         *  
+         *  @return Float that can be no smaller than the minimum value or larger than the maximum value.
+         */
+        public float Clamp(float p_value)
+        {
+            if (p_value <= m_minimum) return m_minimum;
+            return p_value >= m_maximum ? m_maximum : p_value;
+        }
+        #endregion
+
+        //Constructor:
+        public Range(float p_minimum = default, float p_maximum = default)
+        {
+            m_maximum = p_maximum;
+            m_minimum = p_minimum;
+        }
+    }
+
     /**
      *  A simple math library to wrap up frequently used arithmetic.
      * 

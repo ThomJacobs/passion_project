@@ -37,8 +37,12 @@ namespace NamelessProgrammer.UI
             instructor.transform.SetParent(FindObjectOfType<Canvas>().transform);
         }
 
-        public void UpdateText(string p_text) => m_textbox.text = p_text;
-        public void ClearText() => m_textbox.text = string.Empty;
+        public void UpdateText(string p_text) 
+        { 
+            Debug.Log("Updated"); 
+            m_textbox.text = p_text; 
+        }
+        public void ClearText() { Debug.Log("Cleared"); m_textbox.text = string.Empty; }
         #endregion
     }
 }

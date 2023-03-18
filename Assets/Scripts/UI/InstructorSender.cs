@@ -29,6 +29,7 @@ namespace NamelessProgrammer.UI
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            Debug.Log("Updating Text");
             m_instructor.UpdateText(m_message);
         }
 
