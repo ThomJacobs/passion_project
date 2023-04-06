@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mamaba.Core
+namespace Mamba.Core
 {
     [System.Serializable]
     public struct Axis

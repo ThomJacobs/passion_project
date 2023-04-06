@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NamelessProgrammer
+namespace Mamba.Interactable
 {
     [CreateAssetMenu(fileName = "WeaponMeta", menuName = "Mamba/Items", order = 0)]
     public class WeaponMeta : ScriptableObject

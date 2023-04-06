@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NamelessProgrammer
+namespace Mamba.Interactable
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class Inventory : MonoBehaviour
